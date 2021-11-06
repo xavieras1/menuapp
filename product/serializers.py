@@ -15,7 +15,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "get_thumbnail"
         )
 
-class CategorySerializer(serializers.ModelSerializer):
+class LocationSerializer(serializers.ModelSerializer):
     products = ProductSerializer(many=True)
 
     class Meta:
