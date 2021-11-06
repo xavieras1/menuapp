@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
 
+    'product',
+
     'whitenoise.runserver_nostatic',
 ]
 
