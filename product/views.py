@@ -3,8 +3,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, Location
+from .serializers import ProductSerializer, LocationSerializer
 
 class LatestProductsList(APIView):
     def get(self, request, format=None):
@@ -22,4 +22,16 @@ class ProductDetail(APIView):
     def get(self, request, location_slug, product_slug, format=None):
         product = self.get_object(location_slug, product_slug)
         serializer = ProductSerializer(product)
+        return Response(serializer.data)
+
+class LocationDetail(APIView):
+    def get_object(self, location_slug):
+        try:
+            return Location.objects.get(slug=location_slug)
+        except Location.DoesNotExist:
+            raise Http404
+    
+    def get(self, request, location_slug, format=None):
+        location = self.get_object(location_slug)
+        serializer = LocationSerializer (location)
         return Response(serializer.data)
