@@ -6,5 +6,5 @@ urlpatterns = [
     path('latest-products/', views.LatestProductsList.as_view()),
     #path('products/search/', views.search),
     path('products/<slug:location_slug>/<slug:product_slug>/', views.ProductDetail.as_view()),
-    path('products/<slug:location_slug>/', views.Location Detail.as_view()),
+    path('products/<slug:location_slug>/', views.LocationDetail.as_view()),
 ]
