@@ -53,8 +53,8 @@ class Meal(models.Model):
 
         return thumbnail
 
-class OrderItem(models.Model):
-    order = models.ForeignKey(Meal, related_name='items', on_delete=models.CASCADE)
+class MealItem(models.Model):
+    meal = models.ForeignKey(Meal, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='items', on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     measure = models.CharField(max_length=255)
