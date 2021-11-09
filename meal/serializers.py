@@ -22,6 +22,7 @@ class MealSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "name",
+            "items",
             "get_absolute_url",
             "description",
             "get_image",
