@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'djoser',
 
     'product',
+    'meal',
 
     'whitenoise.runserver_nostatic',
 ]
