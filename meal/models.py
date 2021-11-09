@@ -6,6 +6,7 @@ from django.db import models
 
 from product.models import Product
 
+base_url = 'https://a-y-a-menu.herokuapp.com'
 
 class Meal(models.Model):
     name = models.CharField(max_length=255)
@@ -26,18 +27,18 @@ class Meal(models.Model):
     
     def get_image(self):
         if self.image:
-            return 'https://a-y-a-menu.herokuapp.com' + self.image.url
+            return base_url + self.image.url
         return ''
     
     def get_thumbnail(self):
         if self.thumbnail:
-            return 'https://a-y-a-menu.herokuapp.com' + self.thumbnail.url
+            return base_url + self.thumbnail.url
         else:
             if self.image:
                 self.thumbnail = self.make_thumbnail(self.image)
                 self.save()
 
-                return 'https://a-y-a-menu.herokuapp.com' + self.thumbnail.url
+                return base_url + self.thumbnail.url
             else:
                 return ''
     

@@ -4,6 +4,8 @@ from PIL import Image
 from django.core.files import File
 from django.db import models
 
+base_url = 'https://a-y-a-menu.herokuapp.com'
+
 class Location(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
@@ -38,18 +40,18 @@ class Product(models.Model):
     
     def get_image(self):
         if self.image:
-            return 'https://a-y-a-menu.herokuapp.com' + self.image.url
+            return base_url + self.image.url
         return ''
     
     def get_thumbnail(self):
         if self.thumbnail:
-            return 'https://a-y-a-menu.herokuapp.com' + self.thumbnail.url
+            return base_url + self.thumbnail.url
         else:
             if self.image:
                 self.thumbnail = self.make_thumbnail(self.image)
                 self.save()
 
-                return 'https://a-y-a-menu.herokuapp.com' + self.thumbnail.url
+                return base_url + self.thumbnail.url
             else:
                 return ''
     
