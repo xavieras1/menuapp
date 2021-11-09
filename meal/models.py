@@ -61,4 +61,4 @@ class MealItem(models.Model):
     measure = models.CharField(max_length=255)
 
     def __str__(self):
-        return '%s' % self.id
+        return '%s %s' % self.meal, self.product
