@@ -50,6 +50,8 @@ INSTALLED_APPS = [
 
     'product',
     'meal',
+    'itemslist',
+    'schedule',
 
     'whitenoise.runserver_nostatic',
 ]
