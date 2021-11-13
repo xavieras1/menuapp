@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import OrderList
-from .serializers import OrderListSerializer, OrderListSerializer2, OrderListSerializer3
+from .serializers import OrderListSerializer, OrderListSerializer3
 
 class ItemsList(APIView):
     authentication_classes = [authentication.TokenAuthentication]
