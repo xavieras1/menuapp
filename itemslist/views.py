@@ -15,8 +15,6 @@ class ItemsList(APIView):
         orders = OrderList.objects.filter(user=request.user)
         serializer = OrderListSerializer(orders, many=True)
         print(serializer.data)
-        serializer2 = OrderListSerializer2(orders, many=True)
-        print(serializer2.data)
         serializer3 = OrderListSerializer3(orders, many=True)
         print(serializer3.data)
         

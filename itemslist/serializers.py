@@ -25,17 +25,6 @@ class OrderListSerializer(serializers.ModelSerializer):
             "items",
         )
 
-class OrderListSerializer2(serializers.ModelSerializer):
-    items = ListItemSerializer(many=True)
-    
-
-    class Meta:
-        model = OrderList
-        fields = (
-            "type",
-            "items",
-        )
-
 class OrderListSerializer3(serializers.ModelSerializer):
     items = ListItemSerializer(many=True, required=False)
     
