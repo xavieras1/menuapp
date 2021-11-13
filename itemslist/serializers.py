@@ -16,8 +16,6 @@ class ListItemSerializer(serializers.ModelSerializer):
 
 class OrderListSerializer(serializers.ModelSerializer):
     print('tests')
-    items = ListItemSerializer(many=True, required=False, allow_null=True)
-    print(items)
     etems = ListItemSerializer(many=True)
     print(etems)
     items = ListItemSerializer(many=True, required=False)
