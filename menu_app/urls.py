@@ -24,5 +24,5 @@ urlpatterns = [
     path('api/v1/', include('djoser.urls.authtoken')),
     path('api/v1/', include('product.urls')),
     path('api/v1/', include('meal.urls')),
-    path('api/v1/', include('itemlist.urls')),
+    path('api/v1/', include('itemslist.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
