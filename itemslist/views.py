@@ -12,9 +12,7 @@ class ItemsList(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, format=None):
-        print(request.user)
         orders = OrderList.objects.filter(user=request.user)
-        print(orders)
         serializer = OrderListSerializer(orders, many=True)
         return Response(serializer.data)
 
