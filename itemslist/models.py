@@ -12,7 +12,7 @@ class OrderList(models.Model):
         ordering = ['-created_at',]
     
     def __str__(self):
-        return self.id
+        return self.type
 
 class ListItem(models.Model):
     list = models.ForeignKey(OrderList, related_name='products', on_delete=models.CASCADE)
