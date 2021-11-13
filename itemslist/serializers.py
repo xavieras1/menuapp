@@ -24,14 +24,3 @@ class OrderListSerializer(serializers.ModelSerializer):
             "type",
             "items",
         )
-
-class OrderListSerializer3(serializers.ModelSerializer):
-    items = ListItemSerializer(many=True, required=False)
-    
-
-    class Meta:
-        model = OrderList
-        fields = (
-            "type",
-            "items",
-        )
