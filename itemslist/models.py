@@ -3,7 +3,7 @@ from django.db import models
 
 from product.models import Product
 
-class List(models.Model):
+class OrderList(models.Model):
     user = models.ForeignKey(User, related_name='lists', on_delete=models.CASCADE)
     type = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -15,7 +15,7 @@ class List(models.Model):
         return self.id
 
 class ListItem(models.Model):
-    list = models.ForeignKey(List, related_name='products', on_delete=models.CASCADE)
+    list = models.ForeignKey(OrderList, related_name='products', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='products', on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
 
