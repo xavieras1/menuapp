@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import OrderList
-from .serializers import OrderListSerializer
+from .serializers import OrderListSerializer, OrderListSerializer2, OrderListSerializer3
 
 class ItemsList(APIView):
     authentication_classes = [authentication.TokenAuthentication]
@@ -14,6 +14,15 @@ class ItemsList(APIView):
     def get(self, request, format=None):
         orders = OrderList.objects.filter(user=request.user)
         serializer = OrderListSerializer(orders, many=True)
+        print(serializer)
+        serializer2 = OrderListSerializer2(orders, many=True)
+        print(serializer2)
+        serializer3 = OrderListSerializer3(orders, many=True)
+        print(serializer3)
+        print('data')
+        print(serializer.data)
+        print(serializer2.data)
+        print(serializer3.data)
         return Response(serializer.data)
 
     #def post(self, request, format=None):

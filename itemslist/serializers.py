@@ -15,9 +15,29 @@ class ListItemSerializer(serializers.ModelSerializer):
         )
 
 class OrderListSerializer(serializers.ModelSerializer):
-    print('tests')
+    items = ListItemSerializer(many=True, required=False, allow_null=True)
+    
+
+    class Meta:
+        model = OrderList
+        fields = (
+            "type",
+            "items",
+        )
+
+class OrderListSerializer2(serializers.ModelSerializer):
+    etems = ListItemSerializer(many=True)
+    
+
+    class Meta:
+        model = OrderList
+        fields = (
+            "type",
+            "items",
+        )
+
+class OrderListSerializer3(serializers.ModelSerializer):
     items = ListItemSerializer(many=True, required=False)
-    print(items)
     
 
     class Meta:
