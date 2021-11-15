@@ -20,8 +20,10 @@ class ItemsList(APIView):
 
     def post(self, request, format=None):
         print(request.data)
-        #order_list = OrderList.objects.get(pk=request.data.id)
-        #print(order_list)
+        print(request.data.type)
+        order_list = OrderList.objects.filter(type=request.data.type)#.delete()
+        print(order_list)
+        print(order_list[0])
         #order_items = ListItem.objects.filter(list=order_list)#.delete()
         #print(order_items)
         #serializer = OrderListSerializer(order_list, data=request.data)
