@@ -31,6 +31,8 @@ class ItemsList(APIView):
         print(serializer.data)
         serializer2 = ListItemSerializer(request.data['items'], many=True)
         print(serializer2.data)
+        serializer.data['items'] = serializer2.data
+        print(serializer.data)
         if serializer.is_valid():
             print('valido')
             print(serializer.data)
