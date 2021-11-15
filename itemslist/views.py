@@ -33,7 +33,7 @@ class ItemsList(APIView):
         #serializer = OrderListSerializer(order_list[0])
         #print(serializer.data)
         serializer = OrderListSerializer(order_list, data=request.data)
-        serializer.is_valid(raise_exception=True)
+        #serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         #print(serializer.data)
         #serializer = ListItemSerializer(request.data['items'], many=True)
