@@ -23,12 +23,12 @@ class ItemsList(APIView):
         print(request.data['type'])
         order_list = OrderList.objects.filter(type=request.data['type'])[0]
         print(order_list)
-        order_items = ListItem.objects.filter(list=order_list)#.delete()
+        order_items = ListItem.objects.filter(list=order_list).delete()
         print(order_items)
         print(len(order_items))
-        print(order_items[0])
-        #serializer = OrderListSerializer(order_list, data=request.data)
-        #print(serializer.data)
+        print(request.data['items'])
+        serializer = OrderListSerializer(order_list, data=request.data['items'])
+        print(serializer.data)
         #if serializer.is_valid():
         #    serializer.save()
         #    return Response(serializer.data)
