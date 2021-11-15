@@ -31,6 +31,7 @@ class ItemsList(APIView):
         #serializer = OrderListSerializer(order_list[0])
         #print(serializer.data)
         serializer = OrderListSerializer(order_list, data=request.data)
+        serializer.create(request.data)
         #serializer.is_valid(raise_exception=True)
         
         #print(serializer.data)
@@ -42,7 +43,7 @@ class ItemsList(APIView):
         if serializer.is_valid():
             print('valido')
             #print(serializer.data)
-            serializer.create(request.data)
+            
             #serializer.save(list=order_list[0])
             #serializer.save()
             return Response(serializer.data)
