@@ -10,6 +10,7 @@ class ListItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ListItem
         fields = (
+            "list",
             "product",
             "quantity",
         )
