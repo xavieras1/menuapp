@@ -19,6 +19,7 @@ class ItemsList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
+        print(request.data)
         order_list = OrderList.objects.filter(type=request.data['type'])
         print(order_list)
         order_items = ListItem.objects.filter(list=order_list[0])#.delete()
