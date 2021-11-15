@@ -30,9 +30,9 @@ class OrderListSerializer(serializers.ModelSerializer):
         print('serializer')
         print(validated_data)
         items_data = validated_data.pop('items')
-        order = OrderList.objects.create(**validated_data)
-
+        order = OrderList.objects.filter(type=validated_data['type'])
         print(order)
+        #order = OrderList.objects.create(**validated_data)
 
         for item_data in items_data:
             ListItem.objects.create(order=order, **item_data)
