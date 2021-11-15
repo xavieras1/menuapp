@@ -27,6 +27,9 @@ class ItemsList(APIView):
         print(order_items)
         print(len(order_items))
         print(request.data['items'])
+        for item_data in request.data['items']:
+            a=ListItem.objects.create(order=order_list, **item_data)
+            print(a)
         #serializer = OrderListSerializer(order_list[0])
         #print(serializer.data)
         serializer = ListItemSerializer(data=request.data['items'], many=True)
