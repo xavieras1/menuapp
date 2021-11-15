@@ -27,15 +27,16 @@ class ItemsList(APIView):
         print(order_items)
         print(len(order_items))
         print(request.data['items'])
-        serializer = OrderListSerializer(order_list[0])
-        print(serializer.data)
-        serializer2 = ListItemSerializer(request.data['items'], many=True)
-        print(serializer2.data)
-        serializer.data['items'] = serializer2.data
-        print(serializer.data)
+        #serializer = OrderListSerializer(order_list[0])
+        #print(serializer.data)
+        serializer = ListItemSerializer(data=request.data['items'], many=True)
+        #print(serializer2.data)
+        #serializer.data['items'] = serializer2.data
+        #print(serializer.data)
         if serializer.is_valid():
             print('valido')
             print(serializer.data)
+            serializer.save(user=request.user)
         #    serializer.save()
         #    return Response(serializer.data)
         #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
