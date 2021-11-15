@@ -21,9 +21,9 @@ class ItemsList(APIView):
     def post(self, request, format=None):
         print(request.data)
         print(request.data['type'])
-        order_list = OrderList.objects.filter(type=request.data['type'])[0]
+        order_list = OrderList.objects.filter(type=request.data['type'])
         print(order_list)
-        order_items = ListItem.objects.filter(list=order_list).delete()
+        order_items = ListItem.objects.filter(list=order_list[0]).delete()
         print(order_items)
         print(len(order_items))
         print(request.data['items'])
