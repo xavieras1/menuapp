@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import OrderList, ListItem
-from .serializers import OrderListSerializer, ListItemSerializer
+from .serializers import OrderListSerializer
 
 class ItemsList(APIView):
     authentication_classes = [authentication.TokenAuthentication]
@@ -42,11 +42,11 @@ class ItemsList(APIView):
         if serializer.is_valid():
             print('valido')
             #print(serializer.data)
-            #serializer.create(request.data)
+            serializer.create(request.data)
             #serializer.save(list=order_list[0])
-            serializer.save()
-        #    return Response(serializer.data)
-        #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            #serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     #def post(self, request, format=None):
     #    serializer = OrderListSerializer(data=request.data)
