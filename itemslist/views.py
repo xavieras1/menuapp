@@ -19,14 +19,12 @@ class ItemsList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        print(request.data)
-        print(request.data['type'])
         order_list = OrderList.objects.filter(type=request.data['type'])
         print(order_list)
-        order_items = ListItem.objects.filter(list=order_list[0]).delete()
+        order_items = ListItem.objects.filter(list=order_list[0])#.delete()
+        order_items.delete()
         print(order_items)
         print(len(order_items))
-        print(request.data['items'])
         #for item_data in request.data['items']:
         #    a=ListItem.objects.create(order=order_list, **item_data)
         #    print(a)
@@ -34,7 +32,7 @@ class ItemsList(APIView):
         #print(serializer.data)
         serializer = OrderListSerializer(order_list, data=request.data)
         #serializer.is_valid(raise_exception=True)
-        serializer.create(request.data)
+        
         #print(serializer.data)
         #serializer = ListItemSerializer(request.data['items'], many=True)
         #serializer.save(list=order_list)
@@ -43,10 +41,10 @@ class ItemsList(APIView):
         #print(serializer.data)
         if serializer.is_valid():
             print('valido')
-            print(serializer.data)
-            self.perform_create(serializer)
-            serializer.save(list=order_list[0])
-        #    serializer.save()
+            #print(serializer.data)
+            #serializer.create(request.data)
+            #serializer.save(list=order_list[0])
+            serializer.save()
         #    return Response(serializer.data)
         #return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

@@ -28,12 +28,8 @@ class OrderListSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        print('serializer')
-        print(validated_data)
         items_data = validated_data.pop('items')
         order = OrderList.objects.filter(type=validated_data['type'])
-        print(order)
-        #order = OrderList.objects.create(**validated_data)
 
         for item_data in items_data:
             product_data = item_data.pop('product')
