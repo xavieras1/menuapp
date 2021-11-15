@@ -27,9 +27,9 @@ class ItemsList(APIView):
         print(order_items)
         print(len(order_items))
         print(request.data['items'])
-        serializer = OrderListSerializer(order_list[0])
-        print(serializer.data)
-        OrderListSerializer.create( validated_data=request.data)
+        serializer = OrderListSerializer(order_list[0], data=request.data)
+        #print(serializer.data)
+        #OrderListSerializer.create( validated_data=request.data)
         if serializer.is_valid():
             print('valido')
             print(serializer.data)
