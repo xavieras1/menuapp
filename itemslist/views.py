@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import OrderList, ListItem
-from .serializers import OrderListSerializer
+from .serializers import OrderListSerializer, ListItemSerializer
 
 class ItemsList(APIView):
     authentication_classes = [authentication.TokenAuthentication]
@@ -29,7 +29,8 @@ class ItemsList(APIView):
         print(request.data['items'])
         serializer = OrderListSerializer(order_list[0])
         print(serializer.data)
-        OrderListSerializer.create(request.data)
+        serializer2 = ListItemSerializer(request.data['items'], many=True)
+        print(serializer2.data)
         if serializer.is_valid():
             print('valido')
             print(serializer.data)
