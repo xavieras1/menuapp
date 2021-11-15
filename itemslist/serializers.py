@@ -17,7 +17,6 @@ class ListItemSerializer(serializers.ModelSerializer):
 class OrderListSerializer(serializers.ModelSerializer):
     items = ListItemSerializer(many=True, required=False, allow_null=True)
     
-
     class Meta:
         model = OrderList
         fields = (
