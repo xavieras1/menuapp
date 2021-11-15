@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from .models import OrderList, ListItem
 
+from product.models import Product
 from product.serializers import ProductSerializer
 
 class ListItemSerializer(serializers.ModelSerializer):    
@@ -35,6 +36,8 @@ class OrderListSerializer(serializers.ModelSerializer):
         #order = OrderList.objects.create(**validated_data)
 
         for item_data in items_data:
-            ListItem.objects.create(order=order, **item_data)
+            product_data = validated_data.pop('product')
+            product = Product.objects.filter(pk=product_data['id'])
+            ListItem.objects.create(order=order,product=product, **item_data)
             
         return order
