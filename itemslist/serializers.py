@@ -21,6 +21,7 @@ class OrderListSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderList
         fields = (
+            "id",
             "type",
             "items",
         )
