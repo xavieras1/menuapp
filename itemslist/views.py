@@ -21,11 +21,12 @@ class ItemsList(APIView):
     def post(self, request, format=None):
         print(request.data)
         print(request.data['type'])
-        order_list = OrderList.objects.filter(type=request.data['type'])#.delete()
+        order_list = OrderList.objects.filter(type=request.data['type'])[0]
         print(order_list)
-        print(order_list[0])
-        #order_items = ListItem.objects.filter(list=order_list)#.delete()
-        #print(order_items)
+        order_items = ListItem.objects.filter(list=order_list)#.delete()
+        print(order_items)
+        print(len(order_items))
+        print(order_items[0])
         #serializer = OrderListSerializer(order_list, data=request.data)
         #print(serializer.data)
         #if serializer.is_valid():
