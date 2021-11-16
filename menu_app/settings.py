@@ -57,7 +57,10 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080"
+    "http://localhost:8080",
+    "https://a-y-a-menu-front.herokuapp.com/",
+    "http://a-y-a-menu-front.herokuapp.com/",
+    "www.a-y-a-menu-front.herokuapp.com/"
 ]
 
 MIDDLEWARE = [
