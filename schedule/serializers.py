@@ -11,7 +11,7 @@ class ScheduleItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScheduleItem
         fields = (
-            "list",
+            "schedule",
             "meal",
             "quantity",
             "person",
