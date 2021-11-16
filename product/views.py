@@ -6,7 +6,9 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from .models import Product, Location
+from meal.models import Meal
 from .serializers import ProductSerializer, LocationSerializer
+from meal.serializers import MealSerializer
 
 class LatestProductsList(APIView):
     def get(self, request, format=None):
@@ -45,6 +47,8 @@ def search(request):
     if query:
         products = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
         serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
+        meals = Meal.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        meal_serializer = MealSerializer(meals, many=True)
+        return Response(serializer.data + meal_serializer.data)
     else:
         return Response({"products": []})
