@@ -21,8 +21,7 @@ class ItemsList(APIView):
     def post(self, request, format=None):
         print(request.data)
         order_list = OrderList.objects.filter(type=request.data['type'])
-        order_items = ListItem.objects.filter(list=order_list[0])#.delete()
-        order_items.delete()
+        order_items = ListItem.objects.filter(list=order_list[0]).delete()
         serializer = OrderListSerializer(order_list[0], data=request.data)
         serializer.create(request.data)
         if serializer.is_valid():

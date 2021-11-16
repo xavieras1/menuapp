@@ -11,11 +11,11 @@ class Schedule(models.Model):
         ordering = ['-created_at',]
     
     def __str__(self):
-        return self.id
+        return '%s %s' % (self.user, self.id)
 
 class ScheduleItem(models.Model):
-    list = models.ForeignKey(Schedule, related_name='meals', on_delete=models.CASCADE)
-    product = models.ForeignKey(Meal, related_name='meals', on_delete=models.CASCADE)
+    schedule = models.ForeignKey(Schedule, related_name='meals', on_delete=models.CASCADE)
+    meal = models.ForeignKey(Meal, related_name='meals', on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     person = models.CharField(max_length=100)
     shift = models.CharField(max_length=100)
