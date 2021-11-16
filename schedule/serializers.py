@@ -26,6 +26,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
         model = Schedule
         fields = (
             "id",
+            "user",
             "items",
         )
 
