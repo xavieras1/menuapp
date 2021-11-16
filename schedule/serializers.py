@@ -32,7 +32,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         items_data = validated_data.pop('items')
-        schedule = Schedule.objects.filter(user=validated_data.user)
+        schedule = Schedule.objects.filter(user=validated_data['user'])
 
         for item_data in items_data:
             meal_data = item_data.pop('meal')
