@@ -8,7 +8,7 @@ from rest_framework import status
 from .models import Schedule, ScheduleItem
 from .serializers import ScheduleSerializer
 
-class Schedule(APIView):
+class ScheduleView(APIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
