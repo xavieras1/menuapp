@@ -7,6 +7,13 @@ from rest_framework.response import Response
 from .models import Meal
 from .serializers import MealSerializer
 
+
+class GetMealsList(APIView):
+    def get(self, request, format=None):
+        meals = Meal.objects.all()
+        serializer = MealSerializer(meals, many=True)
+        return Response(serializer.data)
+
 class LatestMealsList(APIView):
     def get(self, request, format=None):
         meals = Meal.objects.all()[0:4]
