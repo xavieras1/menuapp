@@ -21,7 +21,7 @@ class ScheduleView(APIView):
     def post(self, request, format=None):
         print(request.data)
         schedule = Schedule.objects.filter(user=request.user)
-        schedule_items = ScheduleItem.objects.filter(list=schedule[0]).delete()
+        schedule_items = ScheduleItem.objects.filter(schedule=schedule[0]).delete()
         #schedule_items.delete()
         serializer = ScheduleSerializer(schedule[0], data=request.data)
         serializer.create(request.data)
