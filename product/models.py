@@ -22,6 +22,7 @@ class Location(models.Model):
 class Product(models.Model):
     location = models.ForeignKey(Location, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
+    order = models.IntegerField(default=1)
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
     #price = models.DecimalField(max_digits=6, decimal_places=2)
